@@ -1,4 +1,5 @@
-﻿using E_Study.Data.Mappings;
+﻿using E_Study.Data.Extensions;
+using E_Study.Data.Mappings;
 using E_Study.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,6 +20,7 @@ namespace E_Study.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.SeedData();
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\E-Study.Application\E-Study.Application.csproj" />
     <ProjectReference Include="..\E-Study.Domain\E-Study.Domain.csproj" />
   </ItemGroup>
 
