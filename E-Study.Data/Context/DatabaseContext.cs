@@ -1,4 +1,5 @@
-﻿using E_Study.Domain.Entities;
+﻿using E_Study.Data.Mappings;
+using E_Study.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace E_Study.Data.Context
 {
-    class DatabaseContext: DbContext
+    public class DatabaseContext: DbContext
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options):base(options)
         { }
@@ -14,5 +15,11 @@ namespace E_Study.Data.Context
         #region "DbSets"
         public DbSet<User> Users { get; set; }
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserMap());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
