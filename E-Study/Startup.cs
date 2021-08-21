@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using E_Study.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using E_Study.IoC;
 
 namespace E_Study
 {
@@ -25,6 +26,7 @@ namespace E_Study
             services.AddControllersWithViews();
             services.AddDbContext<DatabaseContext>
                 (option => option.UseSqlServer(Configuration.GetConnectionString("DefaultDatabase")).EnableSensitiveDataLogging()) ;
+            NativeInjector.RegisterServices(services);
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
